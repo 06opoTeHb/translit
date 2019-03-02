@@ -52,25 +52,28 @@ def _inverse(line: str, standard='GOST', language='ru'):
         wrd = []
         word_ = word
         if standard == 'GOST':
-            word_ = word_.upper().replace('SHH', 'Щ')
-            word_ = word_.upper().replace('YA', 'Я')
-            word_ = word_.upper().replace('YO', 'Ё')
-            word_ = word_.upper().replace('YU', 'Ю')
-            word_ = word_.upper().replace('YA', 'Я')
-            word_ = word_.upper().replace('E`', 'Э')
-            word_ = word_.upper().replace('``', 'Ъ')
-            word_ = word_.upper().replace('`', 'Ь')
-        elif standard == 'ICAO':
-            word_ = word_.upper().replace('SHCH', 'Щ')
-            word_ = word_.upper().replace('KH', 'Х')
-            word_ = word_.upper().replace('TS', 'Ц')
-            word_ = word_.upper().replace('IE', 'Ъ')
-            word_ = word_.upper().replace('IU', 'Ю')
-            word_ = word_.upper().replace('IA', 'Я')
-        if standard == 'GOST' or standard == 'ICAO':
-            word_ = word_.upper().replace('SH', 'Ш')
-            word_ = word_.upper().replace('ZH', 'Ж')
-            word_ = word_.upper().replace('CH', 'Ч')
+            if 'SHH' in word_.upper():
+                word_ = word_.upper().replace('SHH', 'Щ')
+            if 'YA' in word_.upper():
+                word_ = word_.upper().replace('YA', 'Я')
+            if 'YO' in word_.upper():
+                word_ = word_.upper().replace('YO', 'Ё')
+            if 'YU' in word_.upper():
+                word_ = word_.upper().replace('YU', 'Ю')
+            if 'YA' in word_.upper():
+                word_ = word_.upper().replace('YA', 'Я')
+            if 'E`' in word_.upper():
+                word_ = word_.upper().replace('E`', 'Э')
+            if '``' in word_.upper():
+                word_ = word_.upper().replace('``', 'Ъ')
+            if '`' in word_.upper():
+                word_ = word_.upper().replace('`', 'Ь')
+            if 'SH' in word_.upper():
+                word_ = word_.upper().replace('SH', 'Ш')
+            if 'ZH' in word_.upper():
+                word_ = word_.upper().replace('ZH', 'Ж')
+            if 'CH' in word_.upper():
+                word_ = word_.upper().replace('CH', 'Ч')
         for ltr in word_:
             if ltr.upper() in lng.STANDARDS_INV[language][standard]:
                 wrd.append(lng.STANDARDS_INV[language][standard][ltr.upper()])
